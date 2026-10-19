@@ -1,14 +1,26 @@
-# Operating System Files
+# Dependencies
+node_modules/
+.pnp
+.pnp.js
+
+# Production build
+dist/
+build/
+
+# Vite & Cache
+.vite/
+*.local
+
+# Logs
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+*.log
+
+# Editor & OS files
+.vscode/
+.idea/
 .DS_Store
 Thumbs.db
 desktop.ini
-
-# Node / Temp files
-node_modules/
-*.log
-.scratch/
-
-# IDE / Editor Files
-.vscode/
-.idea/
 *.swp
