@@ -1,13 +1,15 @@
 import { useMemo, useState } from 'react';
-import { portfolio } from '../../data/projectsData.js';
 import ProjectCard from './ProjectCard.jsx';
 import SectionTabs from './SectionTabs.jsx';
 
-export default function ProjectGrid() {
-  const categories = useMemo(() => ['All', ...portfolio.getCategories()], []);
+export default function ProjectGrid({ projects, onSelect }) {
+  const categories = useMemo(() => ['All', ...new Set(projects.map(({ category }) => category))], [projects]);
   const [active, setActive] = useState('All');
-  const projects = portfolio.getProjects(active);
-  const counts = Object.fromEntries(categories.map((category) => [category, portfolio.getProjectCount(category)]));
+  const visibleProjects = active === 'All' ? projects : projects.filter(({ category }) => category === active);
+  const counts = Object.fromEntries(categories.map((category) => [
+    category,
+    category === 'All' ? projects.length : projects.filter((project) => project.category === category).length,
+  ]));
 
   return (
     <section className="section-wrap projects-section" id="projects">
@@ -17,9 +19,9 @@ export default function ProjectGrid() {
       </div>
       <SectionTabs categories={categories} active={active} onChange={setActive} counts={counts} />
       <div className="projects-grid" key={active}>
-        {projects.map((project, index) => <ProjectCard key={project.id} project={project} index={index} />)}
+        {visibleProjects.map((project, index) => <ProjectCard key={project.id} project={project} index={index} onSelect={onSelect} />)}
       </div>
-      <p className="projects-note">A few starting points — more projects and write-ups are on the way.</p>
+      <p className="projects-note">Concept previews are illustrative. Project images, video, and write-ups can be added in each project’s media data.</p>
     </section>
   );
 }
