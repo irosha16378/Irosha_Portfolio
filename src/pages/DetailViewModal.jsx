@@ -10,6 +10,23 @@ const headings = {
 export default function DetailViewModal({ item, type, onClose }) {
   const dialogRef = useRef(null);
 
+  function keepFocusInside(event) {
+    if (event.key !== 'Tab' || !dialogRef.current) return;
+    const focusable = [...dialogRef.current.querySelectorAll('button:not([disabled]), a[href], [tabindex]:not([tabindex="-1"])')];
+    if (focusable.length === 0) return;
+
+    const first = focusable[0];
+    const last = focusable[focusable.length - 1];
+    const active = document.activeElement;
+    if (event.shiftKey && (active === first || active === dialogRef.current)) {
+      event.preventDefault();
+      last.focus();
+    } else if (!event.shiftKey && (active === last || active === dialogRef.current)) {
+      event.preventDefault();
+      first.focus();
+    }
+  }
+
   useEffect(() => {
     const previouslyFocused = document.activeElement;
     const previousOverflow = document.body.style.overflow;
@@ -39,6 +56,7 @@ export default function DetailViewModal({ item, type, onClose }) {
         aria-labelledby="detail-title"
         ref={dialogRef}
         tabIndex={-1}
+        onKeyDown={keepFocusInside}
       >
         <div className="detail-topline"><span>{type.toUpperCase()} / {item.category ?? item.institution}</span><button type="button" className="detail-close" onClick={onClose} aria-label="Close details"><X size={19} /></button></div>
         <div className="detail-content">
@@ -67,7 +85,13 @@ export default function DetailViewModal({ item, type, onClose }) {
           {type === 'project' && (
             <div className="detail-block">
               <h3>Media & documentation</h3>
-              <div className="detail-placeholder"><span className="detail-placeholder-mark">↗</span><span>Project photos, video walkthroughs, diagrams, and full write-up can be added here.</span></div>
+              {item.media?.length > 0
+                ? <div className="detail-media-grid">{item.media.map((media) => (
+                  media.type === 'video'
+                    ? <video key={media.src} src={media.src} controls preload="metadata" aria-label={media.alt ?? `${item.title} video`} />
+                    : <img key={media.src} src={media.src} alt={media.alt ?? `${item.title} project media`} />
+                ))}</div>
+                : <div className="detail-placeholder"><span className="detail-placeholder-mark">↗</span><span>Project photos, video walkthroughs, diagrams, and full write-up can be added here.</span></div>}
             </div>
           )}
           {type === 'qualification' && (

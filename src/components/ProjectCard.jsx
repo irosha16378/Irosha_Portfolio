@@ -23,18 +23,23 @@ function previewImage(project, slide) {
 export default function ProjectCard({ project, index, onSelect }) {
   const [activeSlide, setActiveSlide] = useState(0);
   const Icon = icons[project.icon] ?? Cpu;
+  const slideCount = project.media.length || 3;
+  const currentMedia = project.media[activeSlide];
 
   useEffect(() => {
-    const interval = window.setInterval(() => setActiveSlide((slide) => (slide + 1) % 3), 3600 + index * 250);
+    if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) return undefined;
+    const interval = window.setInterval(() => setActiveSlide((slide) => (slide + 1) % slideCount), 3600 + index * 250);
     return () => window.clearInterval(interval);
-  }, [index]);
+  }, [index, slideCount]);
 
   return (
     <article className={`project-card project-card-${index % 4}`}>
       <div className="project-preview">
-        <img src={previewImage(project, activeSlide)} alt={`${project.category} concept preview, frame ${activeSlide + 1} of 3`} />
-        <span className="preview-label"><span /> CONCEPT PREVIEW</span>
-        <div className="preview-dots" aria-hidden="true">{[0, 1, 2].map((slide) => <span className={activeSlide === slide ? 'active' : ''} key={slide} />)}</div>
+        {currentMedia?.type === 'video'
+          ? <video src={currentMedia.src} muted autoPlay loop playsInline aria-label={currentMedia.alt ?? `${project.title} video preview`} />
+          : <img src={currentMedia?.src ?? previewImage(project, activeSlide)} alt={currentMedia?.alt ?? `${project.category} concept preview, frame ${activeSlide + 1} of ${slideCount}`} />}
+        <span className="preview-label"><span />{currentMedia ? 'PROJECT PREVIEW' : 'CONCEPT PREVIEW'}</span>
+        <div className="preview-dots" aria-hidden="true">{Array.from({ length: slideCount }, (_, slide) => <span className={activeSlide === slide ? 'active' : ''} key={slide} />)}</div>
       </div>
       <div className="project-card-content">
         <div className="project-card-top">

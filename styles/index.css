@@ -247,6 +247,7 @@ button { color: inherit; }
 .project-card { min-height: 0; padding: 0; cursor: pointer; }
 .project-preview { position: relative; height: 153px; overflow: hidden; border-bottom: 1px solid var(--line); background: #111615; }
 .project-preview img { display: block; width: 100%; height: 100%; object-fit: cover; transition: transform .6s ease, opacity .2s ease; }
+.project-preview video { display: block; width: 100%; height: 100%; object-fit: cover; }
 .project-card:hover .project-preview img { transform: scale(1.035); }
 .preview-label { position: absolute; top: 10px; left: 11px; display: flex; align-items: center; gap: 6px; padding: 6px 8px; border: 1px solid rgba(255,255,255,.12); border-radius: 4px; background: rgba(12,15,14,.72); color: #d1d8d1; font-family: var(--mono); font-size: 7px; letter-spacing: .08em; backdrop-filter: blur(8px); }
 .preview-label span { width: 5px; height: 5px; border-radius: 50%; background: var(--accent); }
@@ -296,6 +297,8 @@ button { color: inherit; }
 .detail-list li::before { position: absolute; top: 6px; left: 1px; width: 5px; height: 5px; border-radius: 50%; background: var(--accent); content: ''; }
 .detail-placeholder { display: flex; align-items: center; gap: 12px; padding: 15px; border: 1px dashed rgba(255,255,255,.14); border-radius: 6px; color: #868f88; font-size: 10px; line-height: 1.6; }
 .detail-placeholder-mark { flex: 0 0 28px; height: 28px; display: grid; place-items: center; border-radius: 6px; background: rgba(184,245,106,.07); color: var(--accent); font-size: 17px; }
+.detail-media-grid { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 8px; }
+.detail-media-grid img, .detail-media-grid video { display: block; width: 100%; max-height: 250px; border: 1px solid var(--line); border-radius: 6px; background: #0b0d0f; object-fit: cover; }
 .detail-tags { margin-top: 22px; }
 @keyframes modal-fade { from { opacity: 0; } to { opacity: 1; } }
 @keyframes modal-rise { from { opacity: .7; transform: translateY(8px) scale(.99); } to { opacity: 1; transform: translateY(0) scale(1); } }
