@@ -3,6 +3,7 @@ export default {
   content: [
     "./index.html",
     "./src/**/*.{js,ts,jsx,tsx}",
+    "./*.{js,ts,jsx,tsx}",
   ],
   darkMode: 'class',
   theme: {
@@ -43,6 +44,8 @@ export default {
         'glow-blue': '0 0 25px -5px rgba(59, 130, 246, 0.35)',
         'glow-violet': '0 0 25px -5px rgba(139, 92, 246, 0.35)',
         'glow-amber': '0 0 25px -5px rgba(245, 158, 11, 0.35)',
+        'glow-emerald': '0 0 25px -5px rgba(16, 185, 129, 0.35)',
+        'glow-rose': '0 0 25px -5px rgba(244, 63, 94, 0.35)',
         'glow-card': '0 10px 30px -10px rgba(0, 0, 0, 0.7), 0 0 1px 1px rgba(255, 255, 255, 0.08)',
       },
       animation: {
