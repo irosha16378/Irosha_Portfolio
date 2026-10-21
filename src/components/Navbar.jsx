@@ -10,6 +10,15 @@ export default function Navbar({
 }) {
   const [open, setOpen] = useState(false);
 
+  const scrollToSection = (sectionId) => {
+    onNavigateHome && onNavigateHome();
+    setOpen(false);
+    setTimeout(() => {
+      const el = document.getElementById(sectionId);
+      if (el) el.scrollIntoView({ behavior: 'smooth' });
+    }, 80);
+  };
+
   return (
     <header className="sticky top-0 z-50 h-18 border-b border-white/10 bg-charcoal-950/80 backdrop-blur-xl">
       <div className="mx-auto flex h-full max-w-7xl items-center justify-between px-4 sm:px-6 lg:px-8">
@@ -21,7 +30,7 @@ export default function Navbar({
               onNavigateHome && onNavigateHome();
               setOpen(false);
             }}
-            className="group inline-flex items-center gap-2 font-display text-lg font-semibold tracking-tight text-white transition-opacity hover:opacity-90"
+            className="group inline-flex items-center gap-2 font-display text-lg font-semibold tracking-tight text-white transition-opacity hover:opacity-90 cursor-pointer"
           >
             <span className="grid h-7 w-7 place-items-center rounded-lg border border-cyan-400/40 bg-cyan-950/50 font-mono text-sm text-cyan-400 shadow-[0_0_12px_-2px_rgba(0,242,254,0.4)]">
               i.
@@ -34,7 +43,7 @@ export default function Navbar({
             <div className="hidden md:flex items-center gap-1.5 font-mono text-xs text-slate-400 bg-charcoal-900/60 px-3 py-1 rounded-full border border-white/10">
               <button
                 onClick={onNavigateHome}
-                className="hover:text-cyan-400 transition-colors flex items-center gap-1"
+                className="hover:text-cyan-400 transition-colors flex items-center gap-1 cursor-pointer"
               >
                 <HomeIcon size={12} />
                 <span>Home</span>
@@ -43,7 +52,7 @@ export default function Navbar({
               {activeCategory && (
                 <button
                   onClick={() => onNavigateCategory && onNavigateCategory(activeCategory.id)}
-                  className={`hover:text-cyan-400 transition-colors truncate max-w-[140px] ${
+                  className={`hover:text-cyan-400 transition-colors truncate max-w-[140px] cursor-pointer ${
                     currentView === 'category' ? 'text-cyan-300 font-medium' : ''
                   }`}
                 >
@@ -61,55 +70,54 @@ export default function Navbar({
         </div>
 
         {/* Desktop Navigation Links */}
-        <nav className="hidden md:flex items-center gap-6 font-mono text-xs text-slate-300">
+        <nav className="hidden lg:flex items-center gap-5 font-mono text-[11px] text-slate-300">
           <button
-            onClick={() => {
-              onNavigateHome && onNavigateHome();
-              const el = document.getElementById('highlight-tracks');
-              if (el) el.scrollIntoView({ behavior: 'smooth' });
-            }}
+            onClick={() => scrollToSection('engineering-tracks')}
             className="hover:text-cyan-400 transition-colors cursor-pointer"
           >
-            01. TRACKS
+            01. ENGINEERING
           </button>
 
           <button
-            onClick={() => {
-              onNavigateHome && onNavigateHome();
-              setTimeout(() => {
-                const el = document.getElementById('about');
-                if (el) el.scrollIntoView({ behavior: 'smooth' });
-              }, 50);
-            }}
-            className="hover:text-cyan-400 transition-colors cursor-pointer"
+            onClick={() => scrollToSection('formal-education')}
+            className="hover:text-emerald-400 transition-colors cursor-pointer"
           >
-            02. ABOUT
+            02. EDUCATION
           </button>
 
           <button
-            onClick={() => {
-              onNavigateHome && onNavigateHome();
-              setTimeout(() => {
-                const el = document.getElementById('skills');
-                if (el) el.scrollIntoView({ behavior: 'smooth' });
-              }, 50);
-            }}
-            className="hover:text-cyan-400 transition-colors cursor-pointer"
+            onClick={() => scrollToSection('technical-courses')}
+            className="hover:text-amber-400 transition-colors cursor-pointer"
           >
-            03. SKILLS
+            03. COURSES
           </button>
 
           <button
-            onClick={() => {
-              onNavigateHome && onNavigateHome();
-              setTimeout(() => {
-                const el = document.getElementById('contact');
-                if (el) el.scrollIntoView({ behavior: 'smooth' });
-              }, 50);
-            }}
+            onClick={() => scrollToSection('beyond-code')}
+            className="hover:text-rose-400 transition-colors cursor-pointer"
+          >
+            04. BEYOND CODE
+          </button>
+
+          <button
+            onClick={() => scrollToSection('skills')}
             className="hover:text-cyan-400 transition-colors cursor-pointer"
           >
-            04. CONTACT
+            05. SKILLS
+          </button>
+
+          <button
+            onClick={() => scrollToSection('about')}
+            className="hover:text-cyan-400 transition-colors cursor-pointer"
+          >
+            06. ABOUT
+          </button>
+
+          <button
+            onClick={() => scrollToSection('contact')}
+            className="hover:text-cyan-400 transition-colors cursor-pointer"
+          >
+            07. CONTACT
           </button>
 
           {/* Resume PDF Download */}
@@ -126,75 +134,72 @@ export default function Navbar({
           </a>
         </nav>
 
-        {/* Mobile Menu Toggle */}
+        {/* Mobile / Tablet Menu Toggle */}
         <button
           type="button"
           aria-label={open ? 'Close Menu' : 'Open Menu'}
           onClick={() => setOpen(!open)}
-          className="md:hidden flex h-9 w-9 items-center justify-center rounded-lg border border-white/10 bg-charcoal-900/80 text-slate-300 hover:text-white"
+          className="lg:hidden flex h-9 w-9 items-center justify-center rounded-lg border border-white/10 bg-charcoal-900/80 text-slate-300 hover:text-white cursor-pointer"
         >
           {open ? <X size={18} /> : <Menu size={18} />}
         </button>
       </div>
 
-      {/* Mobile Drawer */}
+      {/* Mobile / Tablet Drawer */}
       {open && (
-        <div className="md:hidden border-b border-white/10 bg-charcoal-950/95 px-6 py-6 backdrop-blur-2xl">
-          <div className="flex flex-col gap-4 font-mono text-xs">
+        <div className="lg:hidden border-b border-white/10 bg-charcoal-950/95 px-6 py-6 backdrop-blur-2xl">
+          <div className="flex flex-col gap-3.5 font-mono text-xs">
             <button
-              onClick={() => {
-                onNavigateHome && onNavigateHome();
-                setOpen(false);
-                setTimeout(() => {
-                  const el = document.getElementById('highlight-tracks');
-                  if (el) el.scrollIntoView({ behavior: 'smooth' });
-                }, 100);
-              }}
-              className="text-left text-slate-300 hover:text-cyan-400 py-1"
+              onClick={() => scrollToSection('engineering-tracks')}
+              className="text-left text-slate-300 hover:text-cyan-400 py-1 flex items-center justify-between"
             >
-              01. HIGHLIGHT TRACKS
+              <span>01. CORE ENGINEERING TRACKS</span>
+              <span className="text-[10px] text-cyan-400 bg-cyan-950/40 px-2 py-0.5 rounded border border-cyan-500/20">4 DISCIPLINES</span>
             </button>
 
             <button
-              onClick={() => {
-                onNavigateHome && onNavigateHome();
-                setOpen(false);
-                setTimeout(() => {
-                  const el = document.getElementById('about');
-                  if (el) el.scrollIntoView({ behavior: 'smooth' });
-                }, 100);
-              }}
-              className="text-left text-slate-300 hover:text-cyan-400 py-1"
+              onClick={() => scrollToSection('formal-education')}
+              className="text-left text-slate-300 hover:text-emerald-400 py-1 flex items-center justify-between"
             >
-              02. ABOUT & PHILOSOPHY
+              <span>02. FORMAL EDUCATION</span>
+              <span className="text-[10px] text-emerald-400 bg-emerald-950/40 px-2 py-0.5 rounded border border-emerald-500/20">ACADEMICS</span>
             </button>
 
             <button
-              onClick={() => {
-                onNavigateHome && onNavigateHome();
-                setOpen(false);
-                setTimeout(() => {
-                  const el = document.getElementById('skills');
-                  if (el) el.scrollIntoView({ behavior: 'smooth' });
-                }, 100);
-              }}
-              className="text-left text-slate-300 hover:text-cyan-400 py-1"
+              onClick={() => scrollToSection('technical-courses')}
+              className="text-left text-slate-300 hover:text-amber-400 py-1 flex items-center justify-between"
             >
-              03. TECHNICAL SKILLS
+              <span>03. ADDITIONAL TECHNICAL COURSES</span>
+              <span className="text-[10px] text-amber-400 bg-amber-950/40 px-2 py-0.5 rounded border border-amber-500/20">CERTS</span>
             </button>
 
             <button
-              onClick={() => {
-                onNavigateHome && onNavigateHome();
-                setOpen(false);
-                setTimeout(() => {
-                  const el = document.getElementById('contact');
-                  if (el) el.scrollIntoView({ behavior: 'smooth' });
-                }, 100);
-              }}
+              onClick={() => scrollToSection('beyond-code')}
+              className="text-left text-slate-300 hover:text-rose-400 py-1 flex items-center justify-between"
+            >
+              <span>04. PASSIONS & EXTRACURRICULARS</span>
+              <span className="text-[10px] text-rose-400 bg-rose-950/40 px-2 py-0.5 rounded border border-rose-500/20">BEYOND CODE</span>
+            </button>
+
+            <button
+              onClick={() => scrollToSection('skills')}
               className="text-left text-slate-300 hover:text-cyan-400 py-1"
             >
-              04. GET IN TOUCH
+              05. TECHNICAL SKILLS ARSENAL
+            </button>
+
+            <button
+              onClick={() => scrollToSection('about')}
+              className="text-left text-slate-300 hover:text-cyan-400 py-1"
+            >
+              06. ABOUT & ETHOS
+            </button>
+
+            <button
+              onClick={() => scrollToSection('contact')}
+              className="text-left text-slate-300 hover:text-cyan-400 py-1"
+            >
+              07. GET IN TOUCH
             </button>
 
             <a

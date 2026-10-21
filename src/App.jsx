@@ -98,6 +98,7 @@ export default function App() {
           <Home
             categories={categories}
             onSelectCategory={navigateToCategory}
+            onSelectItem={navigateToItem}
           />
         )}
 

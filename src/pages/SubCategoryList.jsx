@@ -69,6 +69,14 @@ export default function SubCategoryList({
 
   const color = categoryMeta?.highlightColor || 'cyan';
 
+  // Group categories for distinct switcher
+  const engineeringTracks = allCategories.filter((c) => 
+    ['embedded-systems', 'industrial-automation', 'robotics', 'machine-learning'].includes(c.id)
+  );
+  const educationTracks = allCategories.filter((c) => c.id === 'qualifications');
+  const courseTracks = allCategories.filter((c) => c.id === 'courses');
+  const passionTracks = allCategories.filter((c) => c.id === 'passions');
+
   return (
     <div className="relative min-h-screen py-10 px-4 sm:px-6 lg:px-8 max-w-7xl mx-auto">
       {/* Background ambient glow */}
@@ -88,7 +96,7 @@ export default function SubCategoryList({
       <div className="flex items-center justify-between border-b border-white/10 pb-5 mb-8">
         <button
           onClick={onBackToHome}
-          className="group inline-flex items-center gap-2 font-mono text-xs text-slate-400 hover:text-cyan-400 transition-colors"
+          className="group inline-flex items-center gap-2 font-mono text-xs text-slate-400 hover:text-cyan-400 transition-colors cursor-pointer"
         >
           <div className="flex h-7 w-7 items-center justify-center rounded-lg border border-white/10 bg-charcoal-900/60 group-hover:border-cyan-400/40">
             <ArrowLeft size={14} className="group-hover:-translate-x-0.5 transition-transform" />
@@ -111,7 +119,7 @@ export default function SubCategoryList({
           </div>
           <div>
             <span className="font-mono text-xs text-cyan-400 tracking-wider uppercase">
-              {categoryMeta?.accentBadge || 'Engineering Discipline'}
+              {categoryMeta?.accentBadge || 'Category Section'}
             </span>
             <span className="mx-2 text-slate-600 font-mono">·</span>
             <span className="font-mono text-xs text-slate-400">
@@ -133,31 +141,120 @@ export default function SubCategoryList({
         </p>
       </div>
 
-      {/* Switcher Bar: Quick jump between the 7 categories without going back */}
+      {/* Switcher Bar: Distinctly separated groups */}
       <div className="mb-8 overflow-x-auto pb-2 scrollbar-none">
-        <div className="flex items-center gap-2 border-b border-white/10 pb-4 min-w-max">
-          <span className="font-mono text-xs text-slate-500 mr-2 flex items-center gap-1">
-            <SlidersHorizontal size={13} /> TRACKS:
-          </span>
-          {allCategories.map((cat) => {
-            const isActive = cat.id === categoryMeta?.id;
-            return (
-              <button
-                key={cat.id}
-                onClick={() => onSelectCategory && onSelectCategory(cat.id)}
-                className={`flex items-center gap-2 rounded-lg px-3 py-1.5 font-mono text-xs transition-all cursor-pointer ${
-                  isActive
-                    ? 'border border-cyan-400/40 bg-cyan-950/60 text-cyan-300 shadow-[0_0_15px_-3px_rgba(0,242,254,0.3)]'
-                    : 'border border-white/5 bg-charcoal-900/60 text-slate-400 hover:border-white/20 hover:text-white'
-                }`}
-              >
-                <span>{cat.shortTitle || cat.title}</span>
-                <span className="rounded-full bg-white/5 px-1.5 py-0.2 text-[10px] text-slate-400">
-                  {cat.count}
-                </span>
-              </button>
-            );
-          })}
+        <div className="flex items-center gap-3 border-b border-white/10 pb-4 min-w-max">
+          
+          {/* Group 1: Engineering Projects */}
+          <div className="flex items-center gap-1.5">
+            <span className="font-mono text-[10px] text-cyan-400 uppercase tracking-wider mr-1">
+              ENGINEERING:
+            </span>
+            {engineeringTracks.map((cat) => {
+              const isActive = cat.id === categoryMeta?.id;
+              return (
+                <button
+                  key={cat.id}
+                  onClick={() => onSelectCategory && onSelectCategory(cat.id)}
+                  className={`flex items-center gap-1.5 rounded-lg px-2.5 py-1.5 font-mono text-xs transition-all cursor-pointer ${
+                    isActive
+                      ? 'border border-cyan-400/40 bg-cyan-950/60 text-cyan-300 shadow-[0_0_15px_-3px_rgba(0,242,254,0.3)]'
+                      : 'border border-white/5 bg-charcoal-900/60 text-slate-400 hover:border-white/20 hover:text-white'
+                  }`}
+                >
+                  <span>{cat.shortTitle || cat.title}</span>
+                  <span className="rounded-full bg-white/5 px-1.5 py-0.2 text-[10px] text-slate-400">
+                    {cat.count}
+                  </span>
+                </button>
+              );
+            })}
+          </div>
+
+          <span className="text-slate-700">|</span>
+
+          {/* Group 2: Formal Education */}
+          <div className="flex items-center gap-1.5">
+            <span className="font-mono text-[10px] text-emerald-400 uppercase tracking-wider mr-1">
+              ACADEMIC:
+            </span>
+            {educationTracks.map((cat) => {
+              const isActive = cat.id === categoryMeta?.id;
+              return (
+                <button
+                  key={cat.id}
+                  onClick={() => onSelectCategory && onSelectCategory(cat.id)}
+                  className={`flex items-center gap-1.5 rounded-lg px-2.5 py-1.5 font-mono text-xs transition-all cursor-pointer ${
+                    isActive
+                      ? 'border border-emerald-500/50 bg-emerald-950/60 text-emerald-300 shadow-[0_0_15px_-3px_rgba(16,185,129,0.3)]'
+                      : 'border border-white/5 bg-charcoal-900/60 text-slate-400 hover:border-white/20 hover:text-white'
+                  }`}
+                >
+                  <span>{cat.shortTitle}</span>
+                  <span className="rounded-full bg-white/5 px-1.5 py-0.2 text-[10px] text-slate-400">
+                    {cat.count}
+                  </span>
+                </button>
+              );
+            })}
+          </div>
+
+          <span className="text-slate-700">|</span>
+
+          {/* Group 3: Technical Courses */}
+          <div className="flex items-center gap-1.5">
+            <span className="font-mono text-[10px] text-amber-400 uppercase tracking-wider mr-1">
+              COURSES:
+            </span>
+            {courseTracks.map((cat) => {
+              const isActive = cat.id === categoryMeta?.id;
+              return (
+                <button
+                  key={cat.id}
+                  onClick={() => onSelectCategory && onSelectCategory(cat.id)}
+                  className={`flex items-center gap-1.5 rounded-lg px-2.5 py-1.5 font-mono text-xs transition-all cursor-pointer ${
+                    isActive
+                      ? 'border border-amber-500/50 bg-amber-950/60 text-amber-300 shadow-[0_0_15px_-3px_rgba(245,158,11,0.3)]'
+                      : 'border border-white/5 bg-charcoal-900/60 text-slate-400 hover:border-white/20 hover:text-white'
+                  }`}
+                >
+                  <span>{cat.shortTitle}</span>
+                  <span className="rounded-full bg-white/5 px-1.5 py-0.2 text-[10px] text-slate-400">
+                    {cat.count}
+                  </span>
+                </button>
+              );
+            })}
+          </div>
+
+          <span className="text-slate-700">|</span>
+
+          {/* Group 4: Passions / Beyond Code */}
+          <div className="flex items-center gap-1.5">
+            <span className="font-mono text-[10px] text-rose-400 uppercase tracking-wider mr-1">
+              BEYOND:
+            </span>
+            {passionTracks.map((cat) => {
+              const isActive = cat.id === categoryMeta?.id;
+              return (
+                <button
+                  key={cat.id}
+                  onClick={() => onSelectCategory && onSelectCategory(cat.id)}
+                  className={`flex items-center gap-1.5 rounded-lg px-2.5 py-1.5 font-mono text-xs transition-all cursor-pointer ${
+                    isActive
+                      ? 'border border-rose-500/50 bg-rose-950/60 text-rose-300 shadow-[0_0_15px_-3px_rgba(244,63,94,0.3)]'
+                      : 'border border-white/5 bg-charcoal-900/60 text-slate-400 hover:border-white/20 hover:text-white'
+                  }`}
+                >
+                  <span>{cat.shortTitle}</span>
+                  <span className="rounded-full bg-white/5 px-1.5 py-0.2 text-[10px] text-slate-400">
+                    {cat.count}
+                  </span>
+                </button>
+              );
+            })}
+          </div>
+
         </div>
       </div>
 
@@ -177,7 +274,7 @@ export default function SubCategoryList({
             {searchQuery && (
               <button
                 onClick={() => setSearchQuery('')}
-                className="absolute right-3 top-1/2 -translate-y-1/2 font-mono text-xs text-slate-400 hover:text-white"
+                className="absolute right-3 top-1/2 -translate-y-1/2 font-mono text-xs text-slate-400 hover:text-white cursor-pointer"
               >
                 Clear
               </button>
@@ -246,7 +343,7 @@ export default function SubCategoryList({
               setSearchQuery('');
               setSelectedTag('ALL');
             }}
-            className="rounded-lg border border-cyan-500/30 bg-cyan-950/40 px-4 py-2 font-mono text-xs text-cyan-300 hover:bg-cyan-900/50 transition-all"
+            className="rounded-lg border border-cyan-500/30 bg-cyan-950/40 px-4 py-2 font-mono text-xs text-cyan-300 hover:bg-cyan-900/50 transition-all cursor-pointer"
           >
             Reset Filters
           </button>
