@@ -460,20 +460,20 @@ const qualifications = [
   }),
   new Qualification({
     id: 'vidyartha-college',
-    title: 'G.C.E. Advanced Level & Ordinary Level',
+    title: 'G.C.E. Advanced Level (A/L)',
     institution: 'Vidyartha College, Kandy',
-    degree: 'Physical Science Stream (A/L) & High Distinction (O/L)',
+    degree: 'Physical Science Stream (A/L)',
     date: 'ALUMNI',
     period: 'Secondary Education',
-    grade: 'A/L: Physical Science · ABC | O/L: 7A 2C',
-    summary: 'Proud alumnus of Vidyartha College, Kandy. Completed G.C.E. Advanced Level in the Physical Science stream achieving ABC (Combined Mathematics, Physics, Chemistry) and Ordinary Level with 7 As.',
+    grade: 'Physical Science · ABC',
+    summary: 'Proud alumnus of Vidyartha College, Kandy. Completed G.C.E. Advanced Level in the Physical Science stream achieving ABC passes in Combined Mathematics, Higher Physics, and Chemistry.',
     description: 'Built an unshakeable analytical foundation in advanced calculus, classical mechanics, electromagnetism, and chemical thermodynamics. Active participant in college sports teams, inter-school science quizzes, and leadership councils.',
     icon: 'book-open',
     highlightColor: 'emerald',
     badgeText: 'Physical Science Alum',
     highlights: [
       'G.C.E. Advanced Level: Physical Science stream (Combined Maths, Physics, Chemistry) — ABC',
-      'G.C.E. Ordinary Level: 7 As and 2 Cs with distinctions in Mathematics, Science, and English',
+      'Strong mathematical rigor: pure mathematics, differential equations, and mechanics',
       'College Sports Colours & Athletic Leadership at Vidyartha College'
     ],
     details: [
@@ -493,36 +493,111 @@ const qualifications = [
     ]
   }),
   new Qualification({
-    id: 'sliot-challenge',
-    title: 'SLIoT Challenge 2026 — Semi-Finalist',
-    institution: 'SLT-MOBITEL & University of Moratuwa SLIoT',
-    degree: 'National IoT Innovation Competition',
-    date: '2026',
-    period: 'National Recognition',
-    grade: 'Top 15 National Teams',
-    summary: 'Recognized as a Semi-Finalist in the prestigious Sri Lanka IoT (SLIoT) Challenge 2026 for designing an autonomous edge telemetry node for smart industrial health monitoring.',
-    description: 'Competed among hundreds of engineering teams nationwide, demonstrating end-to-end hardware prototyping, low-power sensor integration, cloud telemetry synchronization, and practical industrial commercial viability.',
+    id: 'gce-ordinary-level',
+    title: 'G.C.E. Ordinary Level (O/L)',
+    institution: 'Vidyartha College, Kandy',
+    degree: 'Secondary Education Distinction',
+    date: 'ALUMNI',
+    period: 'Secondary Education',
+    grade: 'Distinction · 7 As & 2 Cs',
+    summary: 'Completed G.C.E. Ordinary Level at Vidyartha College, Kandy with outstanding academic distinction, securing 7 A grades (including Mathematics, Science, and English) and 2 C grades.',
+    description: 'Demonstrated early academic excellence across quantitative problem solving, natural sciences, and bilingual language proficiencies. Active participant in junior science exhibitions, college athletic meets, and student leadership councils.',
     icon: 'award',
     highlightColor: 'emerald',
-    badgeText: 'National Semi-Finalist',
+    badgeText: 'O/L Distinction (7A 2C)',
     highlights: [
-      'National Recognition in premier Sri Lankan IoT competition',
-      'Engineered hardware prototype under strict 48-hour live evaluation phases',
-      'Jury commended edge signal processing accuracy and low-latency MQTT architecture'
+      'G.C.E. Ordinary Level Examination: 7 A Distinctions & 2 Credit Passes',
+      'High distinctions in core disciplines: Mathematics, Science, and English Language',
+      'Foundational excellence in analytical calculation, empirical observation, and written communication'
     ],
     details: [
-      'Competition organized by SLT-MOBITEL in partnership with Department of Electronic & Telecommunication Engineering',
-      'Live hardware demonstration of edge vibration analysis and early warning alarms',
-      'Presented business feasibility and manufacturing cost optimization model'
+      'Rigorous assessment across 9 subjects including Mathematics, Science, English, Sinhala, History, and ICT',
+      'Distinction performance in mathematical problem solving and science laboratory fundamentals',
+      'Represented Vidyartha College in inter-school junior academic competitions and athletics'
     ],
     coursesTaken: [
-      'IoT Rapid Prototyping',
-      'Hardware-to-Cloud Interfacing',
-      'Commercial Product Design & Feasibility'
+      'Mathematics (Distinction - A)',
+      'Science & Technology (Distinction - A)',
+      'English Language (Distinction - A)',
+      'Information & Communication Technology (ICT)',
+      'Commerce & Business Studies',
+      'History & Social Studies'
     ],
     media: [
-      'https://images.unsplash.com/photo-1531482615713-2afd69097998?auto=format&fit=crop&w=1200&q=80',
-      'https://images.unsplash.com/photo-1522071820081-009f0129c71c?auto=format&fit=crop&w=1200&q=80'
+      'https://images.unsplash.com/photo-1434030216411-0b793f4b4173?auto=format&fit=crop&w=1200&q=80',
+      'https://images.unsplash.com/photo-1456513080510-7bf3a84b82f8?auto=format&fit=crop&w=1200&q=80'
+    ]
+  }),
+  new Qualification({
+    id: 'esoft-it-course',
+    title: 'Diploma in Information Technology (DiIT)',
+    institution: 'ESOFT Metro Campus',
+    degree: 'Diploma in Information Technology & Computing',
+    date: 'COMPLETED',
+    period: 'Professional Diploma',
+    grade: 'Certified Specialization',
+    summary: 'Comprehensive IT training completed at ESOFT Metro Campus, building robust fundamentals in programming logic, relational databases, web development, and computer networking.',
+    description: 'A hands-on professional IT curriculum covering core algorithmic thinking, software engineering workflows, database design with SQL, front-end web technologies, and systems administration. Provided the practical springboard into advanced software engineering.',
+    icon: 'cpu',
+    highlightColor: 'emerald',
+    badgeText: 'ESOFT IT Certified',
+    highlights: [
+      'Comprehensive curriculum in computer hardware, networking protocols, and systems architecture',
+      'Structured programming fundamentals, algorithm design, and data representation',
+      'Relational Database Management Systems (RDBMS) design and SQL query formulation',
+      'Full responsive web development using HTML5, CSS3, and modern JavaScript'
+    ],
+    details: [
+      'Practical laboratory modules in PC hardware troubleshooting, LAN setup, and TCP/IP configuration',
+      'Built end-to-end database-backed software solutions with structured programming languages',
+      'Coursework accredited under national tertiary and vocational education standards'
+    ],
+    coursesTaken: [
+      'Fundamentals of Information Technology',
+      'Programming Techniques & Structured Logic',
+      'Relational Database Management Systems (SQL)',
+      'Web Design & Internet Technologies',
+      'Computer Hardware & Network Fundamentals'
+    ],
+    media: [
+      'https://images.unsplash.com/photo-1517694712202-14dd9538aa97?auto=format&fit=crop&w=1200&q=80',
+      'https://images.unsplash.com/photo-1526374965328-7f61d4dc18c5?auto=format&fit=crop&w=1200&q=80'
+    ]
+  }),
+  new Qualification({
+    id: 'esoft-english-course',
+    title: 'Diploma in English (DiE)',
+    institution: 'ESOFT Metro Campus',
+    degree: 'Diploma in English Language & Communication',
+    date: 'COMPLETED',
+    period: 'Professional Diploma',
+    grade: 'Certified Fluency',
+    summary: 'Professional English qualification completed at ESOFT Metro Campus, advancing technical writing, international communication, executive presentations, and oral fluency.',
+    description: 'An intensive language and communication programme tailored for technical professionals. Focused on precise written articulation, corporate presentation delivery, listening comprehension, phonetics, and cross-cultural technical discourse.',
+    icon: 'book-open',
+    highlightColor: 'emerald',
+    badgeText: 'ESOFT English Certified',
+    highlights: [
+      'Professional & Business Communication for technology environments',
+      'Advanced English grammar, syntax precision, and technical vocabulary',
+      'Public speaking, stage presence, and executive presentation mastery',
+      'Professional report writing, technical documentation, and formal correspondence'
+    ],
+    details: [
+      'Extensive spoken practice including live debates, impromptu speeches, and technical pitches',
+      'Comprehensive training in drafting technical proposals, engineering logs, and executive summaries',
+      'Interactive listening workshops and pronunciation refinement'
+    ],
+    coursesTaken: [
+      'Professional & Corporate Communication',
+      'Advanced Grammar & Structural Syntax',
+      'Public Speaking & Oral Presentation Skills',
+      'Technical & Business Writing',
+      'Interactive Listening Comprehension'
+    ],
+    media: [
+      'https://images.unsplash.com/photo-1455390582262-044cdead277a?auto=format&fit=crop&w=1200&q=80',
+      'https://images.unsplash.com/photo-1516321318423-f06f85e504b3?auto=format&fit=crop&w=1200&q=80'
     ]
   })
 ];
