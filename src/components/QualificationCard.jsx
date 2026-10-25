@@ -1,6 +1,6 @@
-import { Award, BookOpen, GraduationCap, ArrowUpRight } from 'lucide-react';
+import { Award, BookOpen, GraduationCap, Cpu, ArrowUpRight } from 'lucide-react';
 
-const icons = { 'graduation-cap': GraduationCap, 'book-open': BookOpen, award: Award };
+const icons = { 'graduation-cap': GraduationCap, 'book-open': BookOpen, award: Award, cpu: Cpu };
 
 export default function QualificationCard({ qualification, onSelect }) {
   const Icon = icons[qualification.icon] ?? GraduationCap;

@@ -219,7 +219,7 @@ export default function Home({
               <span className="text-emerald-400 font-semibold">02</span>
               <span className="text-white font-medium">FORMAL EDUCATION & ACADEMIC ACHIEVEMENTS</span>
               <span className="text-slate-600">/</span>
-              <span className="text-slate-500">UNIVERSITY · PHYSICAL SCIENCE STREAM · NATIONAL HONOURS</span>
+              <span className="text-slate-500">UNIVERSITY · PHYSICAL SCIENCE · SECONDARY EDUCATION · ESOFT CERTIFICATIONS</span>
             </div>
             <ArrowDownRight size={14} className="text-emerald-400" />
           </div>
@@ -236,7 +236,7 @@ export default function Home({
             </div>
             <div className="flex flex-col sm:flex-row items-start sm:items-center gap-3">
               <p className="max-w-md text-sm text-slate-300 leading-relaxed font-sans">
-                Rigorous higher education at Sabaragamuwa University, strong physical science fundamentals from Vidyartha College Kandy, and national IoT recognition.
+                Rigorous higher education at Sabaragamuwa University, strong physical science and secondary education fundamentals from Vidyartha College Kandy, and professional IT & English qualifications from ESOFT Metro Campus.
               </p>
               <button
                 onClick={() => onSelectCategory && onSelectCategory('qualifications')}
@@ -249,7 +249,7 @@ export default function Home({
           </div>
 
           {/* Academic Cards Grid */}
-          <div className="grid grid-cols-1 lg:grid-cols-3 gap-6 sm:gap-8">
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 sm:gap-8">
             {educationCategory?.items?.map((qual, idx) => (
               <div
                 key={qual.id}
@@ -262,7 +262,15 @@ export default function Home({
                   {/* Card Header */}
                   <div className="flex items-center justify-between gap-3 mb-5">
                     <div className="flex h-11 w-11 items-center justify-center rounded-xl border border-emerald-500/30 bg-emerald-950/40 text-emerald-400">
-                      {idx === 0 ? <GraduationCap size={22} /> : idx === 1 ? <BookOpen size={20} /> : <Trophy size={20} />}
+                      {qual.icon === 'graduation-cap' ? (
+                        <GraduationCap size={22} />
+                      ) : qual.icon === 'cpu' || qual.icon === 'code' ? (
+                        <Cpu size={20} />
+                      ) : qual.icon === 'award' ? (
+                        <Award size={20} />
+                      ) : (
+                        <BookOpen size={20} />
+                      )}
                     </div>
                     <span className="inline-flex items-center gap-1.5 rounded-full border border-emerald-500/30 bg-emerald-950/40 px-2.5 py-0.5 font-mono text-[10px] text-emerald-300">
                       <span className="h-1.5 w-1.5 rounded-full bg-emerald-400 animate-pulse" />

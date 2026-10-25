@@ -42,6 +42,7 @@ export class Qualification {
     this.badgeText = badgeText;
     this.media = Array.isArray(media) ? media : [];
     this.highlightColor = highlightColor;
+    this.documentation = this.details.length > 0 ? this.details : this.highlights;
   }
 
   hasCredential() {
