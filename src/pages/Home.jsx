@@ -78,7 +78,12 @@ export default function Home({
       <Hero onExploreTracks={scrollToEngineering} />
 
       {/* ==================================================================== */}
-      {/* SECTION 01: CORE ENGINEERING PROJECTS TRACKS                         */}
+      {/* SECTION 01: ABOUT & ENGINEERING PHILOSOPHY                           */}
+      {/* ==================================================================== */}
+      <About onNavigateCategory={onSelectCategory} />
+
+      {/* ==================================================================== */}
+      {/* SECTION 02: CORE ENGINEERING PROJECTS TRACKS                         */}
       {/* ==================================================================== */}
       <section className="py-16 sm:py-24 border-t border-white/10" id="engineering-tracks">
         <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
@@ -208,7 +213,7 @@ export default function Home({
       </section>
 
       {/* ==================================================================== */}
-      {/* SECTION 02: FORMAL EDUCATIONAL QUALIFICATIONS (SEPARATE SECTION)     */}
+      {/* SECTION 03: FORMAL EDUCATIONAL QUALIFICATIONS (SEPARATE SECTION)     */}
       {/* ==================================================================== */}
       <section className="py-16 sm:py-24 border-t border-white/10 bg-charcoal-900/20" id="formal-education">
         <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
@@ -331,7 +336,12 @@ export default function Home({
       </section>
 
       {/* ==================================================================== */}
-      {/* SECTION 03: ADDITIONAL TECHNICAL COURSES (SEPARATE SECTION)          */}
+      {/* SECTION 04: TECHNICAL SKILLS ARSENAL (TOOLKIT)                       */}
+      {/* ==================================================================== */}
+      <TechnicalSkills />
+
+      {/* ==================================================================== */}
+      {/* SECTION 05: ADDITIONAL TECHNICAL COURSES (SEPARATE SECTION)          */}
       {/* ==================================================================== */}
       <section className="py-16 sm:py-24 border-t border-white/10" id="technical-courses">
         <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
@@ -448,7 +458,7 @@ export default function Home({
       </section>
 
       {/* ==================================================================== */}
-      {/* SECTION 04: PASSIONS & EXTRACURRICULARS (SEPARATE SECTION)           */}
+      {/* SECTION 06: PASSIONS & EXTRACURRICULARS (SEPARATE SECTION)           */}
       {/* ==================================================================== */}
       <section className="py-16 sm:py-24 border-t border-white/10 bg-charcoal-900/20" id="beyond-code">
         <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
@@ -552,16 +562,6 @@ export default function Home({
 
         </div>
       </section>
-
-      {/* ==================================================================== */}
-      {/* SECTION 05: TECHNICAL SKILLS ARSENAL                                 */}
-      {/* ==================================================================== */}
-      <TechnicalSkills />
-
-      {/* ==================================================================== */}
-      {/* SECTION 06: ABOUT & ENGINEERING PHILOSOPHY                           */}
-      {/* ==================================================================== */}
-      <About onNavigateCategory={onSelectCategory} />
 
       {/* ==================================================================== */}
       {/* SECTION 07: CONTACT & DIRECT SIGNAL DISPATCH                         */}

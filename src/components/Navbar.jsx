@@ -72,45 +72,45 @@ export default function Navbar({
         {/* Desktop Navigation Links */}
         <nav className="hidden lg:flex items-center gap-5 font-mono text-[11px] text-slate-300">
           <button
+            onClick={() => scrollToSection('about')}
+            className="hover:text-cyan-400 transition-colors cursor-pointer"
+          >
+            01. ABOUT
+          </button>
+
+          <button
             onClick={() => scrollToSection('engineering-tracks')}
             className="hover:text-cyan-400 transition-colors cursor-pointer"
           >
-            01. ENGINEERING
+            02. ENGINEERING
           </button>
 
           <button
             onClick={() => scrollToSection('formal-education')}
             className="hover:text-emerald-400 transition-colors cursor-pointer"
           >
-            02. EDUCATION
-          </button>
-
-          <button
-            onClick={() => scrollToSection('technical-courses')}
-            className="hover:text-amber-400 transition-colors cursor-pointer"
-          >
-            03. COURSES
-          </button>
-
-          <button
-            onClick={() => scrollToSection('beyond-code')}
-            className="hover:text-rose-400 transition-colors cursor-pointer"
-          >
-            04. BEYOND CODE
+            03. EDUCATION
           </button>
 
           <button
             onClick={() => scrollToSection('skills')}
             className="hover:text-cyan-400 transition-colors cursor-pointer"
           >
-            05. SKILLS
+            04. SKILLS
           </button>
 
           <button
-            onClick={() => scrollToSection('about')}
-            className="hover:text-cyan-400 transition-colors cursor-pointer"
+            onClick={() => scrollToSection('technical-courses')}
+            className="hover:text-amber-400 transition-colors cursor-pointer"
           >
-            06. ABOUT
+            05. COURSES
+          </button>
+
+          <button
+            onClick={() => scrollToSection('beyond-code')}
+            className="hover:text-rose-400 transition-colors cursor-pointer"
+          >
+            06. BEYOND CODE
           </button>
 
           <button
@@ -150,10 +150,17 @@ export default function Navbar({
         <div className="lg:hidden border-b border-white/10 bg-charcoal-950/95 px-6 py-6 backdrop-blur-2xl">
           <div className="flex flex-col gap-3.5 font-mono text-xs">
             <button
+              onClick={() => scrollToSection('about')}
+              className="text-left text-slate-300 hover:text-cyan-400 py-1"
+            >
+              01. ABOUT & ETHOS
+            </button>
+
+            <button
               onClick={() => scrollToSection('engineering-tracks')}
               className="text-left text-slate-300 hover:text-cyan-400 py-1 flex items-center justify-between"
             >
-              <span>01. CORE ENGINEERING TRACKS</span>
+              <span>02. CORE ENGINEERING TRACKS</span>
               <span className="text-[10px] text-cyan-400 bg-cyan-950/40 px-2 py-0.5 rounded border border-cyan-500/20">4 DISCIPLINES</span>
             </button>
 
@@ -161,15 +168,22 @@ export default function Navbar({
               onClick={() => scrollToSection('formal-education')}
               className="text-left text-slate-300 hover:text-emerald-400 py-1 flex items-center justify-between"
             >
-              <span>02. FORMAL EDUCATION</span>
+              <span>03. FORMAL EDUCATION</span>
               <span className="text-[10px] text-emerald-400 bg-emerald-950/40 px-2 py-0.5 rounded border border-emerald-500/20">ACADEMICS</span>
+            </button>
+
+            <button
+              onClick={() => scrollToSection('skills')}
+              className="text-left text-slate-300 hover:text-cyan-400 py-1"
+            >
+              04. TECHNICAL SKILLS ARSENAL
             </button>
 
             <button
               onClick={() => scrollToSection('technical-courses')}
               className="text-left text-slate-300 hover:text-amber-400 py-1 flex items-center justify-between"
             >
-              <span>03. ADDITIONAL TECHNICAL COURSES</span>
+              <span>05. ADDITIONAL TECHNICAL COURSES</span>
               <span className="text-[10px] text-amber-400 bg-amber-950/40 px-2 py-0.5 rounded border border-amber-500/20">CERTS</span>
             </button>
 
@@ -177,22 +191,8 @@ export default function Navbar({
               onClick={() => scrollToSection('beyond-code')}
               className="text-left text-slate-300 hover:text-rose-400 py-1 flex items-center justify-between"
             >
-              <span>04. PASSIONS & EXTRACURRICULARS</span>
+              <span>06. PASSIONS & EXTRACURRICULARS</span>
               <span className="text-[10px] text-rose-400 bg-rose-950/40 px-2 py-0.5 rounded border border-rose-500/20">BEYOND CODE</span>
-            </button>
-
-            <button
-              onClick={() => scrollToSection('skills')}
-              className="text-left text-slate-300 hover:text-cyan-400 py-1"
-            >
-              05. TECHNICAL SKILLS ARSENAL
-            </button>
-
-            <button
-              onClick={() => scrollToSection('about')}
-              className="text-left text-slate-300 hover:text-cyan-400 py-1"
-            >
-              06. ABOUT & ETHOS
             </button>
 
             <button
