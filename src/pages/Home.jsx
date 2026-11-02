@@ -336,12 +336,62 @@ export default function Home({
       </section>
 
       {/* ==================================================================== */}
-      {/* SECTION 04: TECHNICAL SKILLS ARSENAL (TOOLKIT)                       */}
+      {/* SECTION 04: ACHIEVEMENTS                                             */}
+      {/* ==================================================================== */}
+      <section className="py-16 sm:py-24 border-t border-white/10" id="achievements">
+        <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+          <div className="flex items-center justify-between border-b border-white/10 pb-4 mb-10 font-mono text-xs text-slate-400">
+            <div className="flex items-center gap-2">
+              <span className="text-violet-400 font-semibold">03</span>
+              <span className="text-white font-medium">ACHIEVEMENTS & RECOGNITION</span>
+              <span className="text-slate-600">/</span>
+              <span className="text-slate-500">INTERNET OF THINGS</span>
+            </div>
+            <ArrowDownRight size={14} className="text-violet-400" />
+          </div>
+
+          <div className="flex flex-col md:flex-row md:items-end justify-between gap-6 mb-12">
+            <div>
+              <span className="font-mono text-xs uppercase tracking-wider text-violet-400">
+                MILESTONES & RECOGNITION
+              </span>
+              <h2 className="mt-2 font-display text-3xl sm:text-4xl md:text-5xl font-medium tracking-tight text-white">
+                Achievements <span className="text-violet-400">& Recognition.</span>
+              </h2>
+            </div>
+            <p className="max-w-md text-sm text-slate-300 leading-relaxed font-sans">
+              A few milestones from my journey in technology and engineering.
+            </p>
+          </div>
+
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 sm:gap-8">
+            <article className="group rounded-2xl border border-white/10 bg-charcoal-900/70 p-7 backdrop-blur-xl transition-all duration-300 hover:border-violet-400/50 hover:shadow-[0_0_30px_-5px_rgba(139,92,246,0.3)]">
+              <div className="flex items-center justify-between gap-3 mb-5">
+                <div className="flex h-11 w-11 items-center justify-center rounded-xl border border-violet-500/30 bg-violet-950/40 text-violet-400">
+                  <Trophy size={22} />
+                </div>
+                <span className="inline-flex items-center rounded-full border border-violet-500/30 bg-violet-950/40 px-2.5 py-1 font-mono text-[10px] text-violet-300">
+                  INTERNET OF THINGS
+                </span>
+              </div>
+              <h3 className="font-display text-xl font-medium text-white transition-colors group-hover:text-violet-200">
+                SL IoT
+              </h3>
+              <p className="mt-3 text-xs sm:text-sm text-slate-300/80 leading-relaxed">
+                A milestone in my journey with the Internet of Things and connected technology.
+              </p>
+            </article>
+          </div>
+        </div>
+      </section>
+
+      {/* ==================================================================== */}
+      {/* SECTION 05: TECHNICAL SKILLS ARSENAL (TOOLKIT)                       */}
       {/* ==================================================================== */}
       <TechnicalSkills />
 
       {/* ==================================================================== */}
-      {/* SECTION 05: ADDITIONAL TECHNICAL COURSES (SEPARATE SECTION)          */}
+      {/* SECTION 06: ADDITIONAL TECHNICAL COURSES (SEPARATE SECTION)          */}
       {/* ==================================================================== */}
       <section className="py-16 sm:py-24 border-t border-white/10" id="technical-courses">
         <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
@@ -349,7 +399,7 @@ export default function Home({
           {/* Section Divider Bar */}
           <div className="flex items-center justify-between border-b border-white/10 pb-4 mb-10 font-mono text-xs text-slate-400">
             <div className="flex items-center gap-2">
-              <span className="text-amber-400 font-semibold">03</span>
+              <span className="text-amber-400 font-semibold">05</span>
               <span className="text-white font-medium">ADDITIONAL TECHNICAL COURSES & CERTIFICATIONS</span>
               <span className="text-slate-600">/</span>
               <span className="text-slate-500">MITSUBISHI PLC · ROS 2 HUMBLE · FREERTOS KERNEL</span>
@@ -458,7 +508,7 @@ export default function Home({
       </section>
 
       {/* ==================================================================== */}
-      {/* SECTION 06: PASSIONS & EXTRACURRICULARS (SEPARATE SECTION)           */}
+      {/* SECTION 07: PASSIONS & EXTRACURRICULARS (SEPARATE SECTION)           */}
       {/* ==================================================================== */}
       <section className="py-16 sm:py-24 border-t border-white/10 bg-charcoal-900/20" id="beyond-code">
         <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
@@ -466,7 +516,7 @@ export default function Home({
           {/* Section Divider Bar */}
           <div className="flex items-center justify-between border-b border-white/10 pb-4 mb-10 font-mono text-xs text-slate-400">
             <div className="flex items-center gap-2">
-              <span className="text-rose-400 font-semibold">04</span>
+              <span className="text-rose-400 font-semibold">06</span>
               <span className="text-white font-medium">BEYOND THE SCREEN — PASSIONS & EXTRACURRICULARS</span>
               <span className="text-slate-600">/</span>
               <span className="text-slate-500">ATHLETICS · LIVE PERCUSSION · MEDIA & VOLUNTEERING</span>

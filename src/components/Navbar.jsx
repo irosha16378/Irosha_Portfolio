@@ -70,7 +70,7 @@ export default function Navbar({
         </div>
 
         {/* Desktop Navigation Links */}
-        <nav className="hidden lg:flex items-center gap-5 font-mono text-[11px] text-slate-300">
+        <nav className="hidden xl:flex items-center gap-4 font-mono text-[11px] text-slate-300">
           <button
             onClick={() => scrollToSection('about')}
             className="hover:text-cyan-400 transition-colors cursor-pointer"
@@ -93,31 +93,38 @@ export default function Navbar({
           </button>
 
           <button
+            onClick={() => scrollToSection('achievements')}
+            className="hover:text-violet-400 transition-colors cursor-pointer"
+          >
+            04. ACHIEVEMENTS
+          </button>
+
+          <button
             onClick={() => scrollToSection('skills')}
             className="hover:text-cyan-400 transition-colors cursor-pointer"
           >
-            04. SKILLS
+            05. SKILLS
           </button>
 
           <button
             onClick={() => scrollToSection('technical-courses')}
             className="hover:text-amber-400 transition-colors cursor-pointer"
           >
-            05. COURSES
+            06. COURSES
           </button>
 
           <button
             onClick={() => scrollToSection('beyond-code')}
             className="hover:text-rose-400 transition-colors cursor-pointer"
           >
-            06. BEYOND CODE
+            07. BEYOND CODE
           </button>
 
           <button
             onClick={() => scrollToSection('contact')}
             className="hover:text-cyan-400 transition-colors cursor-pointer"
           >
-            07. CONTACT
+            08. CONTACT
           </button>
 
           {/* Resume PDF Download */}
@@ -139,7 +146,7 @@ export default function Navbar({
           type="button"
           aria-label={open ? 'Close Menu' : 'Open Menu'}
           onClick={() => setOpen(!open)}
-          className="lg:hidden flex h-9 w-9 items-center justify-center rounded-lg border border-white/10 bg-charcoal-900/80 text-slate-300 hover:text-white cursor-pointer"
+          className="xl:hidden flex h-9 w-9 items-center justify-center rounded-lg border border-white/10 bg-charcoal-900/80 text-slate-300 hover:text-white cursor-pointer"
         >
           {open ? <X size={18} /> : <Menu size={18} />}
         </button>
@@ -147,7 +154,7 @@ export default function Navbar({
 
       {/* Mobile / Tablet Drawer */}
       {open && (
-        <div className="lg:hidden border-b border-white/10 bg-charcoal-950/95 px-6 py-6 backdrop-blur-2xl">
+        <div className="xl:hidden border-b border-white/10 bg-charcoal-950/95 px-6 py-6 backdrop-blur-2xl">
           <div className="flex flex-col gap-3.5 font-mono text-xs">
             <button
               onClick={() => scrollToSection('about')}
@@ -173,17 +180,25 @@ export default function Navbar({
             </button>
 
             <button
+              onClick={() => scrollToSection('achievements')}
+              className="text-left text-slate-300 hover:text-violet-400 py-1 flex items-center justify-between"
+            >
+              <span>04. ACHIEVEMENTS</span>
+              <span className="text-[10px] text-violet-400 bg-violet-950/40 px-2 py-0.5 rounded border border-violet-500/20">SL IoT</span>
+            </button>
+
+            <button
               onClick={() => scrollToSection('skills')}
               className="text-left text-slate-300 hover:text-cyan-400 py-1"
             >
-              04. TECHNICAL SKILLS ARSENAL
+              05. TECHNICAL SKILLS ARSENAL
             </button>
 
             <button
               onClick={() => scrollToSection('technical-courses')}
               className="text-left text-slate-300 hover:text-amber-400 py-1 flex items-center justify-between"
             >
-              <span>05. ADDITIONAL TECHNICAL COURSES</span>
+              <span>06. ADDITIONAL TECHNICAL COURSES</span>
               <span className="text-[10px] text-amber-400 bg-amber-950/40 px-2 py-0.5 rounded border border-amber-500/20">CERTS</span>
             </button>
 
@@ -191,7 +206,7 @@ export default function Navbar({
               onClick={() => scrollToSection('beyond-code')}
               className="text-left text-slate-300 hover:text-rose-400 py-1 flex items-center justify-between"
             >
-              <span>06. PASSIONS & EXTRACURRICULARS</span>
+              <span>07. PASSIONS & EXTRACURRICULARS</span>
               <span className="text-[10px] text-rose-400 bg-rose-950/40 px-2 py-0.5 rounded border border-rose-500/20">BEYOND CODE</span>
             </button>
 
@@ -199,7 +214,7 @@ export default function Navbar({
               onClick={() => scrollToSection('contact')}
               className="text-left text-slate-300 hover:text-cyan-400 py-1"
             >
-              07. GET IN TOUCH
+              08. GET IN TOUCH
             </button>
 
             <a
