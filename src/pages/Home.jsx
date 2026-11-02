@@ -342,7 +342,7 @@ export default function Home({
         <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
           <div className="flex items-center justify-between border-b border-white/10 pb-4 mb-10 font-mono text-xs text-slate-400">
             <div className="flex items-center gap-2">
-              <span className="text-violet-400 font-semibold">03</span>
+              <span className="text-violet-400 font-semibold">04</span>
               <span className="text-white font-medium">ACHIEVEMENTS & RECOGNITION</span>
               <span className="text-slate-600">/</span>
               <span className="text-slate-500">INTERNET OF THINGS</span>
@@ -399,7 +399,7 @@ export default function Home({
           {/* Section Divider Bar */}
           <div className="flex items-center justify-between border-b border-white/10 pb-4 mb-10 font-mono text-xs text-slate-400">
             <div className="flex items-center gap-2">
-              <span className="text-amber-400 font-semibold">05</span>
+              <span className="text-amber-400 font-semibold">06</span>
               <span className="text-white font-medium">ADDITIONAL TECHNICAL COURSES & CERTIFICATIONS</span>
               <span className="text-slate-600">/</span>
               <span className="text-slate-500">MITSUBISHI PLC · ROS 2 HUMBLE · FREERTOS KERNEL</span>
@@ -516,7 +516,7 @@ export default function Home({
           {/* Section Divider Bar */}
           <div className="flex items-center justify-between border-b border-white/10 pb-4 mb-10 font-mono text-xs text-slate-400">
             <div className="flex items-center gap-2">
-              <span className="text-rose-400 font-semibold">06</span>
+              <span className="text-rose-400 font-semibold">07</span>
               <span className="text-white font-medium">BEYOND THE SCREEN — PASSIONS & EXTRACURRICULARS</span>
               <span className="text-slate-600">/</span>
               <span className="text-slate-500">ATHLETICS · LIVE PERCUSSION · MEDIA & VOLUNTEERING</span>
