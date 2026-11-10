@@ -10,7 +10,7 @@ import { Qualification } from '../classes/Qualification.js';
 const embeddedProjects = [
   new Project({
     id: 'industrial-iot-vibration-node',
-    title: 'Industrial Edge IoT Vibration & Thermal Node',
+    title: 'Smart DRS System',
     category: 'Embedded Systems',
     subcategory: 'Condition Monitoring & FreeRTOS',
     tagline: 'Edge FFT computation and real-time anomaly detection for high-speed industrial spindle motors',
@@ -61,7 +61,7 @@ void vTaskVibrationAnalysis(void *pvParameters) {
   }),
   new Project({
     id: 'long-range-lorawan-factory',
-    title: 'Smart Factory LoRaWAN Environmental Gateway',
+    title: 'Saferide Accident Alert System',
     category: 'Embedded Systems',
     subcategory: 'Ultra-Low Power LPWAN',
     tagline: 'Sub-gigahertz wireless sensor mesh for microclimate tracking across a 50,000 sq. ft facility',
