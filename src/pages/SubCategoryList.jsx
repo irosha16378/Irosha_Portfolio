@@ -37,9 +37,12 @@ export default function SubCategoryList({
 
   const IconComponent = categoryIcons[categoryMeta?.id] || Layers;
 
+  const isEngineeringCategory = categoryMeta?.section === 'engineering' || 
+    ['embedded-systems', 'industrial-automation', 'robotics', 'machine-learning'].includes(categoryMeta?.id);
+
   // Extract all unique tags across items in this category
   const allTags = useMemo(() => {
-    if (!categoryMeta?.items) return [];
+    if (!categoryMeta?.items || isEngineeringCategory) return [];
     const tagSet = new Set();
     categoryMeta.items.forEach((item) => {
       (item.technologies || item.skillsAcquired || item.coursesTaken || []).forEach((tag) => {
@@ -47,11 +50,12 @@ export default function SubCategoryList({
       });
     });
     return Array.from(tagSet);
-  }, [categoryMeta]);
+  }, [categoryMeta, isEngineeringCategory]);
 
   // Filter items based on search and tag
   const filteredItems = useMemo(() => {
     if (!categoryMeta?.items) return [];
+    if (isEngineeringCategory) return categoryMeta.items;
     return categoryMeta.items.filter((item) => {
       const matchesSearch = typeof item.matchesSearch === 'function'
         ? item.matchesSearch(searchQuery)
@@ -65,7 +69,7 @@ export default function SubCategoryList({
 
       return matchesSearch && matchesTag;
     });
-  }, [categoryMeta, searchQuery, selectedTag]);
+  }, [categoryMeta, searchQuery, selectedTag, isEngineeringCategory]);
 
   const color = categoryMeta?.highlightColor || 'cyan';
 
@@ -124,75 +128,81 @@ export default function SubCategoryList({
           {categoryMeta?.title}
         </h1>
 
-        <p className="font-mono text-sm text-cyan-300/80 mb-3">
-          {categoryMeta?.subtitle}
-        </p>
+        {!isEngineeringCategory && (
+          <>
+            <p className="font-mono text-sm text-cyan-300/80 mb-3">
+              {categoryMeta?.subtitle}
+            </p>
 
-        <p className="text-slate-300 text-sm sm:text-base leading-relaxed max-w-3xl">
-          {categoryMeta?.description}
-        </p>
+            <p className="text-slate-300 text-sm sm:text-base leading-relaxed max-w-3xl">
+              {categoryMeta?.description}
+            </p>
+          </>
+        )}
       </div>
 
       {/* Search & Tag Filter Toolbar */}
-      <div className="mb-8 space-y-4">
-        <div className="flex flex-col sm:flex-row gap-3 items-stretch sm:items-center justify-between">
-          {/* Search Input */}
-          <div className="relative flex-1 max-w-md">
-            <Search size={16} className="absolute left-3.5 top-1/2 -translate-y-1/2 text-slate-400" />
-            <input
-              type="text"
-              placeholder={`Search ${categoryMeta?.shortTitle || 'items'} by name, keyword, or tech...`}
-              value={searchQuery}
-              onChange={(e) => setSearchQuery(e.target.value)}
-              className="w-full rounded-xl border border-white/10 bg-charcoal-900/80 py-2.5 pl-10 pr-4 font-mono text-xs text-white placeholder-slate-500 focus:border-cyan-400 focus:outline-none focus:ring-1 focus:ring-cyan-400 backdrop-blur-md transition-all"
-            />
-            {searchQuery && (
-              <button
-                onClick={() => setSearchQuery('')}
-                className="absolute right-3 top-1/2 -translate-y-1/2 font-mono text-xs text-slate-400 hover:text-white cursor-pointer"
-              >
-                Clear
-              </button>
-            )}
+      {!isEngineeringCategory && (
+        <div className="mb-8 space-y-4">
+          <div className="flex flex-col sm:flex-row gap-3 items-stretch sm:items-center justify-between">
+            {/* Search Input */}
+            <div className="relative flex-1 max-w-md">
+              <Search size={16} className="absolute left-3.5 top-1/2 -translate-y-1/2 text-slate-400" />
+              <input
+                type="text"
+                placeholder={`Search ${categoryMeta?.shortTitle || 'items'} by name, keyword, or tech...`}
+                value={searchQuery}
+                onChange={(e) => setSearchQuery(e.target.value)}
+                className="w-full rounded-xl border border-white/10 bg-charcoal-900/80 py-2.5 pl-10 pr-4 font-mono text-xs text-white placeholder-slate-500 focus:border-cyan-400 focus:outline-none focus:ring-1 focus:ring-cyan-400 backdrop-blur-md transition-all"
+              />
+              {searchQuery && (
+                <button
+                  onClick={() => setSearchQuery('')}
+                  className="absolute right-3 top-1/2 -translate-y-1/2 font-mono text-xs text-slate-400 hover:text-white cursor-pointer"
+                >
+                  Clear
+                </button>
+              )}
+            </div>
+
+            <div className="font-mono text-xs text-slate-400 text-right">
+              Showing <span className="text-white font-medium">{filteredItems.length}</span> of {categoryMeta?.items?.length || 0}
+            </div>
           </div>
 
-          <div className="font-mono text-xs text-slate-400 text-right">
-            Showing <span className="text-white font-medium">{filteredItems.length}</span> of {categoryMeta?.items?.length || 0}
-          </div>
-        </div>
-
-        {/* Tech Tag Pills (if available) */}
-        {allTags.length > 0 && (
-          <div className="flex flex-wrap items-center gap-1.5">
-            <span className="font-mono text-[10px] uppercase tracking-wider text-slate-500 mr-1">
-              Filter by:
-            </span>
-            <button
-              onClick={() => setSelectedTag('ALL')}
-              className={`rounded-md px-2.5 py-1 font-mono text-[11px] transition-all cursor-pointer ${
-                selectedTag === 'ALL'
-                  ? 'border border-cyan-400/40 bg-cyan-950/60 text-cyan-300'
-                  : 'border border-white/5 bg-charcoal-900/60 text-slate-400 hover:text-white'
-              }`}
-            >
-              All Tags
-            </button>
-            {allTags.map((tag) => (
+          {/* Tech Tag Pills (if available) */}
+          {allTags.length > 0 && (
+            <div className="flex flex-wrap items-center gap-1.5">
+              <span className="font-mono text-[10px] uppercase tracking-wider text-slate-500 mr-1">
+                Filter by:
+              </span>
               <button
-                key={tag}
-                onClick={() => setSelectedTag(tag === selectedTag ? 'ALL' : tag)}
+                onClick={() => setSelectedTag('ALL')}
                 className={`rounded-md px-2.5 py-1 font-mono text-[11px] transition-all cursor-pointer ${
-                  selectedTag === tag
-                    ? 'border border-cyan-400/40 bg-cyan-950/60 text-cyan-300 shadow-[0_0_12px_-2px_rgba(0,242,254,0.3)]'
-                    : 'border border-white/5 bg-charcoal-900/60 text-slate-400 hover:text-white hover:border-white/15'
+                  selectedTag === 'ALL'
+                    ? 'border border-cyan-400/40 bg-cyan-950/60 text-cyan-300'
+                    : 'border border-white/5 bg-charcoal-900/60 text-slate-400 hover:text-white'
                 }`}
               >
-                {tag}
+                All Tags
               </button>
-            ))}
-          </div>
-        )}
-      </div>
+              {allTags.map((tag) => (
+                <button
+                  key={tag}
+                  onClick={() => setSelectedTag(tag === selectedTag ? 'ALL' : tag)}
+                  className={`rounded-md px-2.5 py-1 font-mono text-[11px] transition-all cursor-pointer ${
+                    selectedTag === tag
+                      ? 'border border-cyan-400/40 bg-cyan-950/60 text-cyan-300 shadow-[0_0_12px_-2px_rgba(0,242,254,0.3)]'
+                      : 'border border-white/5 bg-charcoal-900/60 text-slate-400 hover:text-white hover:border-white/15'
+                  }`}
+                >
+                  {tag}
+                </button>
+              ))}
+            </div>
+          )}
+        </div>
+      )}
 
       {/* Items Grid */}
       {filteredItems.length > 0 ? (
